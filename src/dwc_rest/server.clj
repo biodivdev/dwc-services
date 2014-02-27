@@ -1,8 +1,8 @@
 (ns dwc-rest.server
   (:use ring.adapter.jetty
-        ring.util.response
-        ring.middleware.cors)
+        ring.util.response)
   (:use compojure.core)
+  (:use dwc-rest.api)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]))
 
@@ -25,7 +25,8 @@
   [handler]
    (fn [req]
      (if (= "OPTIONS" (:method req))
-       {:headers {"Allow" "GET,POST,OPTIONS" 
+       {:headers {"Allow" "GET,POST,PUT,OPTIONS" 
+                  "Access-Control-Allow-Origin"  "*"
                   "Access-Control-Allow-Methods" "GET,POST,OPTIONS" 
                   "Access-Control-Allow-Headers" "x-requested-with"}
         :status 200}
@@ -34,7 +35,7 @@
 (defroutes main
 
   (GET "/" [] 
-    (redirect "/index.html")
+    (redirect "/index.html"))
 
   (context "/api" []
     (context "/v1" [] api-v1-routes))
@@ -43,7 +44,6 @@
 
 (def app
   (-> (handler/site main)
-      (wrap-cors :access-control-allow-origin #".*")
       (jsonp)
       (options)))
 

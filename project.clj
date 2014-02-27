@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :main dwc-rest.server
-  :ring {:handler dwc-rest.server :reload-paths ["src"]}
+  :ring {:handler dwc-rest.server/app :reload-paths ["src"]}
   :resources-path "resources"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [dwc "0.0.1"]
