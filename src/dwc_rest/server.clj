@@ -37,6 +37,11 @@
   (GET "/" [] 
     (redirect "/index.html"))
 
+  (POST "/echo" req
+    (let [data (slurp (:body req))]
+      (println "/echo" data)
+      {:status 200 :body data}))
+
   (context "/api" []
     (context "/v1" [] api-v1-routes))
 
