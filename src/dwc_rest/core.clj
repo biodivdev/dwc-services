@@ -10,7 +10,8 @@
    :xlsx read-xlsx
    :json read-json
    :geojson read-geojson
-   :dwca read-archive})
+   :dwca read-archive
+   :archive read-archive})
 
 (def writer
   {:json write-json
