@@ -22,7 +22,8 @@
         (if-let [to (:to params)]
           (if-let [hook (:hook params)]
             (do 
-              (future (http/post {:body (convert (:from from :to to :source url))
+              (future
+                (http/post hook {:body (convert {:from from :to to :source url})
                                   :headers {"Content-Type" (get ctypes to)}}))
               {:status 200 :body "ok"})
             {:status 200
@@ -33,7 +34,8 @@
         {:status 400 :body "Must provide 'from' parameter of the input format."})
      {:status 400 :body "Must provide 'url' parameter of data source."})
     (catch Exception e 
-      {:status 500 :body (str "Server error: " (.getMessage e)) })
+      (do (.printStackTrace e)
+        {:status 500 :body (str "Server error: " (.getMessage e))}))
     )
   )
 
