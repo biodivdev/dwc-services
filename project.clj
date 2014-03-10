@@ -16,5 +16,3 @@
                                   [javax.servlet/servlet-api "2.5"]]
                    :plugins [[lein-ring "0.8.6"]
                              [lein-midje "3.0.0"]]}})
-
-
