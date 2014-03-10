@@ -1,7 +1,11 @@
 (ns dwc-rest.core-test
-  (:require [clojure.test :refer :all]
-            [dwc-rest.core :refer :all]))
+  (:use dwc-rest.core
+        midje.sweet))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(fact "It converts"
+  (let [occs [{:scientificName "Vicia faba"}]
+        csv  "\"scientificName\"\n\"Vicia faba\""
+        json "[{\"scientificName\":\"Vicia faba\"}]"]
+    (convert {:from :csv :to :json :source (str-to-file csv)}) => json
+    ))
+
