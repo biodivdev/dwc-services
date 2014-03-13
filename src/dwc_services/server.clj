@@ -1,8 +1,8 @@
-(ns dwc-rest.server
+(ns dwc-services.server
   (:use ring.adapter.jetty
         ring.util.response)
   (:use compojure.core)
-  (:use dwc-rest.api)
+  (:use dwc-services.api)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]))
 

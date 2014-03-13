@@ -1,6 +1,6 @@
-(ns dwc-rest.api
+(ns dwc-services.api
   (:require [clj-http.client :as http])
-  (:use dwc-rest.core)
+  (:use dwc-services.core)
   (:use compojure.core)
   (:use ring.util.response))
 

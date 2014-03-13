@@ -1,13 +1,13 @@
-(defproject dwc-rest "0.0.1"
+(defproject dwc-services "0.0.1"
   :description "Simple web api to convert darwincore formats."
   :url "http://github.com/CNCFlora/dwc-rest"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :main dwc-rest.server
-  :ring {:handler dwc-rest.server/app :reload-paths ["src"]}
+  :main dwc-services.server
+  :ring {:handler dwc-services.server/app :reload-paths ["src"]}
   :resources-path "resources"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [dwc "0.0.2"]
+                 [dwc "0.0.3"]
                  [compojure "1.1.6"]
                  [ring/ring-core "1.2.1"]
                  [ring/ring-jetty-adapter "1.2.1"]
