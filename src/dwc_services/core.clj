@@ -1,5 +1,6 @@
 (ns dwc-services.core
   (:use dwc.fixes)
+  (:use dwc.validation)
   (:use dwc.csv)
   (:use dwc.xlsx)
   (:use dwc.json)
@@ -31,4 +32,12 @@
       (if-not fixes
        data
        (-fix-> data)))))
+
+(defn fix
+  [data]
+   (-fix-> (read-json data)))
+
+(defn validation
+  [data] 
+   (map validate (read-json data)))
 

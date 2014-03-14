@@ -2,6 +2,7 @@
   (:require [clj-http.client :as http])
   (:use dwc-services.core)
   (:use compojure.core)
+  (:use [clojure.data.json :only [read-str write-str]])
   (:use ring.util.response))
 
 (def ctypes 
@@ -48,6 +49,26 @@
 
   (POST "/convert" req
     (safe #(convert-api (assoc (:params req) :url (:body req)))))
+
+  (GET "/validate" {params :params}
+    (if-let [url (:url params)]
+      (safe #(write-str (validation (:url params))))
+      {:status 400 :body "Must provide 'url' parameter of data as input."}))
+
+  (POST "/validate" req
+    (if-let [data (:body req)]
+      (safe #(write-str (validation data)))
+      {:status 400 :body "Must provide occurrence json of data as input."}))
+
+  (GET "/fix" {params :params}
+    (if-let [data (:url params)]
+      (safe #(write-str (fix data)))
+      {:status 400 :body "Must provide occurrence json of data as input."}))
+
+  (POST "/fix" req
+    (if-let [data (:body req)]
+      (safe #(write-str (fix data)))
+      {:status 400 :body "Must provide occurrence json of data as input."}))
 
 )
 
