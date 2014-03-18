@@ -36,7 +36,6 @@
   [input] 
    (let [tmp (as-file (str "/tmp/dwc-" (java.util.UUID/randomUUID) ".tmp" ))]
      (.createNewFile tmp)
-     (println (.getAbsolutePath tmp))
      (with-open [output (output-stream tmp)]
        (.write output (stream-to-bytes (input-stream input))))
      (.getAbsolutePath tmp )))
