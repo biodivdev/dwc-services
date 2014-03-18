@@ -48,7 +48,7 @@
    (safe #(convert-api (:params req))))
 
   (POST "/convert" req
-    (safe #(convert-api (assoc (:params req) :url (:body req)))))
+    (safe #(convert-api (assoc (:params req) :url (stream-to-file (:body req))))))
 
   (GET "/validate" {params :params}
     (if-let [url (:url params)]
