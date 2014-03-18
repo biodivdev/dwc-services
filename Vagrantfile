@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, :inline => "wget https://raw.github.com/technomancy/leiningen/stable/bin/lein -O /usr/bin/lein"
   config.vm.provision :shell, :inline => "chmod +x /usr/bin/lein"
 
-  config.vm.network :forwarded_port, host: 3000, guest: 3030
+  config.vm.network :forwarded_port, host: 3000, guest: 3000, auto_correct: true
   config.vm.network "private_network", ip: "192.168.50.30"
 end
 
