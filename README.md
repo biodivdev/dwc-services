@@ -1,6 +1,6 @@
-# dwc-rest
+# dwc-services
 
-A Clojure library designed to ... well, that part is up to you.
+Set of common web services around [DarwinCore library](http://github.com/CNCFlora/dwc).
 
 ## Usage
 
@@ -8,7 +8,5 @@ FIXME
 
 ## License
 
-Copyright © 2014 FIXME
+Apache License 2.0
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
