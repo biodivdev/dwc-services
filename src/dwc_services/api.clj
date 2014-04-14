@@ -19,8 +19,12 @@
   [fun] 
    (try (fun)
     (catch Exception e 
-      (do (.printStackTrace e)
-        {:status 500 :body (str "Server error: " (.getMessage e))}))))
+      (do 
+        (.printStackTrace e)
+        {:status 500
+         :headers {"Content-Type" "application/json"}
+         :body (write-str (str "Server error: " (.getMessage e)))
+        }))))
 
 (defn convert-api
   ""
@@ -69,6 +73,26 @@
     (if-let [data (:body req)]
       (safe #(write-str (fix data)))
       {:status 400 :body "Must provide occurrence json of data as input."}))
+
+  (GET "/search/:type" {params :params}
+    (if-let [url (:url params)]
+      (if-let [field (:field params)]
+        (if-let [value (:value params)]
+            (safe #(write-str 
+                    (search (:type params) url
+                      {:filters {field value} 
+                       :fields (vec (.split (or (:fields params) "") ","))
+                       :start (Integer/valueOf (or (:start params) 0))
+                       :limit (Integer/valueOf (or (:limit params) 9999))})))
+          {:status 400 :body "Must provide 'value' parameter to search in field."})
+        {:status 400 :body "Must provide 'field' parameter of field to search in."})
+      {:status 400 :body "Must provide 'url' parameter of data as input."}))
+
+  (GET "/docs" req
+    (redirect "/api-docs/index.json"))
+
+  (GET "/docs/:api" {params :params}
+    (redirect (str "/api-docs/" (:api params) ".json" )))
 
 )
 

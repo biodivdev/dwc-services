@@ -6,7 +6,9 @@
   (:use dwc.json)
   (:use dwc.geojson)
   (:use dwc.archive)
-  (:use clojure.java.io))
+  (:use clojure.java.io)
+  (:require [dwc.tapir :as tapir]
+            [dwc.digir :as digir]))
 
 (def readers
   {:csv read-csv
@@ -55,4 +57,13 @@
 (defn validation
   [data] 
    (map validate (read-json data)))
+
+(defn search
+  [stype url opts]
+  (let [opts (if (empty? (:fields opts)) opts (dissoc opts :fields) )]
+    (if (= "tapir" stype)
+      (tapir/read-tapir url opts)
+      (if (= "digir" stype)
+        (digir/read-digir url opts)
+        nil))))
 

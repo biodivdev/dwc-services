@@ -1,0 +1,21 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "resourcePath":"/convert",
+    "produces":["application/json"],
+    "models":{},
+    "apis": [
+        {
+            "path":"../convert",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"",
+                    "nickname":"",
+                    "parameters":[
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "resourcePath":"/fix",
+    "produces":["application/json"],
+    "models":{},
+    "apis": [
+        {
+            "path":"../fix",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Tries to fix common DwC records problems, from a JSON Array on a URL.",
+                    "nickname":"fix",
+                    "parameters":[
+                        {
+                            "name":"url",
+                            "description":"Location of the resource",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                },
+                {
+                    "method":"POST",
+                    "summary":"Tries to fix common DwC records problems, from posted JSON Array data.",
+                    "nickname":"fix",
+                    "parameters":[
+                        {
+                            "name":"body",
+                            "description":"JSON of Array of DarwinCore records.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

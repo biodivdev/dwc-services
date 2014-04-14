@@ -1,0 +1,71 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "resourcePath":"search",
+    "produces":["application/json"],
+    "models":{},
+    "apis": [
+        {
+            "path":"/../search/{type}",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Search DwC records in a service.",
+                    "nickname":"search",
+                    "parameters":[
+                        {
+                            "name":"type",
+                            "description":"Type of service",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"path",
+                            "enum":["tapir","digir"]
+                        },
+                        {
+                            "name":"url",
+                            "description":"Endpoint of the service",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"field",
+                            "description":"Field to search on",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"value",
+                            "description":"Value to search on field",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"fields",
+                            "description":"Fields to return, comman separeted (eg.: scientificName,family)",
+                            "required":false,
+                            "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"start",
+                            "description":"Start of query(for pagination)",
+                            "required":false,
+                            "type":"integer",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"limit",
+                            "description":"limit of query(for pagination)",
+                            "required":false,
+                            "type":"integer",
+                            "paramType":"query"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
