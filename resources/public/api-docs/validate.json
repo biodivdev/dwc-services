@@ -1,7 +1,7 @@
 {
     "apiVersion":"v1",
     "swaggerVersion":"1.2",
-    "resourcePath":"/validate",
+    "resourcePath":"validate",
     "produces":["application/json"],
     "models":{},
     "apis": [

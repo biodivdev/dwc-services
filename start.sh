@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cd /root/dwc-services && nohup lein ring server-headless > lein.log 2>&1 &
+[[ ! $CONTEXT ]] && CONTEXT="/"
+su $APP_USER -c "cd ~/ && nohup java -jar jetty.jar --path $CONTEXT dwc-services.war > dwc-services.log 2>&1 &" &
 
 /usr/sbin/sshd -D
-
 

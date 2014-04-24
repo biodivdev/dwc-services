@@ -3,34 +3,10 @@
         ring.util.response)
   (:use compojure.core)
   (:use dwc-services.api)
+  (:use dwc-services.web-wrap)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]))
 
-(defn jsonp
-  "JSONP Wrapper"
-  [handler] 
-   (fn [req] 
-     (let [q (:query-string req)
-           response (handler req)]
-       (if (nil? q) response
-         (if-not (.contains q "callback=") response
-           (let [callback (second
-                           (re-find #"callback=([a-zA-Z0-9-_]+)" 
-                            (:query-string req)))]
-               (assoc response :body (str callback "(" (:body response) ");")))
-           )))))
-
-(defn options
-  "CORS Options Wrapper"
-  [handler]
-   (fn [req]
-     (if (= "OPTIONS" (:method req))
-       {:headers {"Allow" "GET,POST,PUT,OPTIONS" 
-                  "Access-Control-Allow-Origin"  "*"
-                  "Access-Control-Allow-Methods" "GET,POST,OPTIONS" 
-                  "Access-Control-Allow-Headers" "x-requested-with"}
-        :status 200}
-       (handler req))))
 
 (defroutes main
 
@@ -49,8 +25,10 @@
 
 (def app
   (-> (handler/site main)
-      (jsonp)
-      (options)))
+      (wrap-context)
+      (wrap-context-redir)
+      (wrap-jsonp)
+      (wrap-options)))
 
 (defn -main
   ""

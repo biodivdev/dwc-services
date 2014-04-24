@@ -6,7 +6,7 @@
     "models":{},
     "apis": [
         {
-            "path":"/../search/{type}",
+            "path":"../search/{type}",
             "operations":[
                 {
                     "method":"GET",
