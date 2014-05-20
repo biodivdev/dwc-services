@@ -2,7 +2,7 @@
     "apiVersion":"v1",
     "swaggerVersion":"1.2",
     "resourcePath":"convert",
-    "produces":["application/json"],
+    "produces":["application/json","text/csv","text/tsv","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"],
     "models":{},
     "apis": [
         {
@@ -10,9 +10,90 @@
             "operations":[
                 {
                     "method":"GET",
-                    "summary":"",
-                    "nickname":"",
+                    "summary":"Convert between formats.",
+                    "nickname":"convert",
                     "parameters":[
+                        {
+                            "name":"url",
+                            "description":"URL to load the data from.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"from",
+                            "description":"Original format.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query",
+                            "enum":["json","geojson","csv","dwca","xlsx"]
+                        },
+                        {
+                            "name":"to",
+                            "description":"Format to convert into.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query",
+                            "enum":["json","geojson"]
+                        },
+                        {
+                            "name":"fixes",
+                            "description":"Apply common fixes.",
+                            "required": false,
+                            "type":"boolean",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"hook",
+                            "description":"URL to post the data to (webhook).",
+                            "required":false,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                },
+                {
+                    "method":"POST",
+                    "summary":"Convert between formats.",
+                    "nickname":"convert",
+                    "parameters":[
+                        {
+                            "name":"body",
+                            "description":"Raw data to convert.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        },
+                        {
+                            "name":"from",
+                            "description":"Original format.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query",
+                            "enum":["json","geojson","csv","dwca","xlsx"]
+                        },
+                        {
+                            "name":"to",
+                            "description":"Format to convert into.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query",
+                            "enum":["json","geojson"]
+                        },
+                        {
+                            "name":"fixes",
+                            "description":"Apply common fixes.",
+                            "required": false,
+                            "type":"boolean",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"hook",
+                            "description":"URL to post the data to (webhook).",
+                            "required":false,
+                            "type":"string",
+                            "paramType":"query"
+                        }
                     ]
                 }
             ]
