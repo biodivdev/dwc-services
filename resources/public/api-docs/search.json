@@ -6,6 +6,32 @@
     "models":{},
     "apis": [
         {
+            "path":"../search/gbif",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Search DwC records in a gbif.",
+                    "nickname":"search gbif",
+                    "parameters":[
+                        {
+                            "name":"field",
+                            "description":"Field to search on",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"value",
+                            "description":"Value to search on field",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                     ]
+ 	        }
+	    ]
+        },
+        {
             "path":"../search/{type}",
             "operations":[
                 {

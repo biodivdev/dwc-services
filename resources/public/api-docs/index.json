@@ -21,7 +21,7 @@
         },
         {
             "path":"search",
-            "description":"Search for DwC records in Digir, Tapir or GBIF(soon)."
+            "description":"Search for DwC records in Digir, Tapir or GBIF."
         }
     ]
 }

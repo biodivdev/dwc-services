@@ -78,6 +78,14 @@
       (safe #(write-str (fix data)))
       {:status 400 :body "Must provide occurrence json of data as input."}))
 
+  (GET "/search/gbif" {params :params}
+    (if-let [field (:field params)]
+      (if-let [value (:value params)]
+        (safe #(write-str 
+                 (gbif {field value})))
+        {:status 400 :body "Must provide 'value' parameter to search in field."})
+      {:status 400 :body "Must provide 'field' parameter of field to search in."}))
+
   (GET "/search/:type" {params :params}
     (if-let [url (:url params)]
       (if-let [field (:field params)]

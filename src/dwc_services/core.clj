@@ -6,6 +6,7 @@
   (:use dwc.json)
   (:use dwc.geojson)
   (:use dwc.archive)
+  (:use dwc.gbif)
   (:use clojure.java.io)
   (:require [dwc.tapir :as tapir]
             [dwc.digir :as digir]))
@@ -17,6 +18,8 @@
    :geojson read-geojson
    :dwca read-archive
    :archive read-archive})
+
+(def gbif read-gbif)
 
 (def writers
   {:json write-json
