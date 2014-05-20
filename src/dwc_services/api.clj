@@ -17,7 +17,11 @@
 (defn safe
   ""
   [fun] 
-   (try (fun)
+   (try 
+     (let [data (fun)]
+       (if (string? data)
+         {:headers {"Content-Type" "application/json"} :body data}
+         data))
     (catch Exception e 
       (do 
         (.printStackTrace e)
@@ -40,7 +44,7 @@
               {:status 200 :body "ok"})
             {:status 200
              :headers {"Content-Disposition" (str "attachment; filename=\"dwc." to "\"")
-                       "Content-Type" (get ctypes to)}
+                       "Content-Type" (get ctypes (keyword to ))}
              :body (convert {:from from :to to :source url :fixes (:fixes params)})})
           {:status 400 :body "Must provide 'to' parameter of the output format."})
         {:status 400 :body "Must provide 'from' parameter of the input format."})
@@ -61,7 +65,7 @@
 
   (POST "/validate" req
     (if-let [data (:body req)]
-      (safe #(write-str (validation data)))
+      (safe #({:headers {"Content-Type" "application/json"} :body ( write-str (validation data) ) }))
       {:status 400 :body "Must provide occurrence json of data as input."}))
 
   (GET "/fix" {params :params}
