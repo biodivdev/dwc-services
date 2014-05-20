@@ -65,7 +65,7 @@
 
   (POST "/validate" req
     (if-let [data (:body req)]
-      (safe #({:headers {"Content-Type" "application/json"} :body ( write-str (validation data) ) }))
+      (safe #(write-str (validation data)))
       {:status 400 :body "Must provide occurrence json of data as input."}))
 
   (GET "/fix" {params :params}
