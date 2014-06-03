@@ -101,7 +101,7 @@
       {:status 400 :body "Must provide 'url' parameter of data as input."}))
 
   (GET "/docs" req
-    (redirect "/docs"))
+    (redirect "/api/v1/docs"))
 
   (GET "/docs/" req
     (redirect "/api-docs/index.json"))
