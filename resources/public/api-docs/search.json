@@ -6,7 +6,7 @@
     "models":{},
     "apis": [
         {
-            "path":"../search/gbif",
+            "path":"search/gbif",
             "operations":[
                 {
                     "method":"GET",
@@ -32,7 +32,7 @@
 	    ]
         },
         {
-            "path":"../search/{type}",
+            "path":"search/{type}",
             "operations":[
                 {
                     "method":"GET",

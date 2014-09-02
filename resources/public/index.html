@@ -19,12 +19,17 @@
   <script type="text/javascript">
     $(function () {
       window.swaggerUi = new SwaggerUi({
-      url: "http://"+location.host+location.pathname.replace("/index.html","")+'/api/v1/docs/',
+      url: location.origin+location.pathname.replace("index.html","")+"api-docs/index.json",
       dom_id: "swagger-ui-container",
       supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
       onComplete: function(swaggerApi, swaggerUi){
-        if(console) {
-          console.log("Loaded SwaggerUI")
+        swaggerApi.basePath=swaggerApi.url.replace("index.json","").replace("api-docs/","api/v1/");
+        swaggerApi.url=swaggerApi.url.replace("index.json","");
+        for(var i in swaggerApi.apis) {
+            if(typeof swaggerApi.apis[i] == 'object' && swaggerApi.apis[i] != null && typeof swaggerApi.apis[i].basePath == 'string')  {
+                console.log(swaggerApi.apis[i]);
+                swaggerApi.apis[i].basePath = swaggerApi.basePath.replace("api-docs/","api/v1/");
+            }
         }
         $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
       },

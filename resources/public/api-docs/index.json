@@ -8,19 +8,19 @@
     },
     "apis":[
         {
-            "path":"convert",
+            "path":"convert.json",
             "description":"Convert DwC records in a format to another format."
         },
         {
-            "path":"validate",
+            "path":"validate.json",
             "description":"Validate DwC records."
         },
         {
-            "path":"fix",
+            "path":"fix.json",
             "description":"Attempt to apply common fixes to DwC records."
         },
         {
-            "path":"search",
+            "path":"search.json",
             "description":"Search for DwC records in Digir, Tapir or GBIF."
         }
     ]

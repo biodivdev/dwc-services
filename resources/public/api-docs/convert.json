@@ -6,7 +6,7 @@
     "models":{},
     "apis": [
         {
-            "path":"../convert",
+            "path":"convert",
             "operations":[
                 {
                     "method":"GET",

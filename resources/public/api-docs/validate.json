@@ -6,7 +6,7 @@
     "models":{},
     "apis": [
         {
-            "path":"../validate",
+            "path":"validate",
             "operations":[
                 {
                     "method":"GET",
