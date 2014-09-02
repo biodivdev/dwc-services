@@ -1,6 +1,6 @@
 FROM dockerfile/java:oracle-java8
 
-RUN apt-get install supervisor ruby -y
+RUN apt-get update && apt-get install supervisor ruby -y
 
 RUN mkdir /var/log/supervisord 
 RUN mkdir /var/lib/floraconnect
@@ -12,7 +12,7 @@ RUN gem sources -r http://rubygems.org/ && gem sources -a https://rubygems.org/ 
 ADD start.sh /root/start.sh
 RUN chmod +x /root/start.sh
 
-ADD target/dwc-services-0.0.7-standalone.war /root/dwc-services.war
+ADD target/dwc-services-0.0.8-standalone.war /root/dwc-services.war
 
 ADD supervisord.conf /etc/supervisor/conf.d/proxy.conf
 
