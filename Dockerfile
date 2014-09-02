@@ -1,11 +1,11 @@
-FROM dockerfile/java
+FROM dockerfile/java:oracle-java8
 
 RUN apt-get install supervisor ruby -y
 
 RUN mkdir /var/log/supervisord 
 RUN mkdir /var/lib/floraconnect
 
-RUN wget http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.2.0.M0/jetty-runner-9.2.0.M0.jar -O /root/jetty.jar
+RUN wget http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.2.2.v20140723/jetty-runner-9.2.2.v20140723.jar -O /root/jetty.jar
 
 RUN gem sources -r http://rubygems.org/ && gem sources -a https://rubygems.org/ && gem install small-ops -v 0.0.30
 
