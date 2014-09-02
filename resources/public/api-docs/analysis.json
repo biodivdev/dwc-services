@@ -1,0 +1,76 @@
+{
+    "apiVersion":"v1",
+    "swaggerVersion":"1.2",
+    "resourcePath":"analysis",
+    "produces":["application/json"],
+    "models":{},
+    "apis": [
+        {
+            "path":"analysis/eoo",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Calculates EOO, from a JSON Array on a URL.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"url",
+                            "description":"Location of the resource",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                },
+                {
+                    "method":"POST",
+                    "summary":"Calculates EOO, from posted JSON Array data.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"body",
+                            "description":"JSON of Array of DarwinCore records.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path":"analysis/aoo",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Calculates aoo, from a JSON Array on a URL.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"url",
+                            "description":"Location of the resource",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                },
+                {
+                    "method":"POST",
+                    "summary":"Calculates aoo, from posted JSON Array data.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"body",
+                            "description":"JSON of Array of DarwinCore records.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+

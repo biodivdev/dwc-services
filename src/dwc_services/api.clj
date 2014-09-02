@@ -100,5 +100,27 @@
         {:status 400 :body "Must provide 'field' parameter of field to search in."})
       {:status 400 :body "Must provide 'url' parameter of data as input."}))
 
+  (context "/analysis" []
+
+    (GET "/eoo" {params :params}
+      (if-let [data (:url params)]
+        (safe #(write-str (eoo data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+
+    (POST "/eoo" req
+      (if-let [data (:body req)]
+        (safe #(write-str (eoo data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+
+    (GET "/aoo" {params :params}
+      (if-let [data (:url params)]
+        (safe #(write-str (aoo data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+
+    (POST "/aoo" req
+      (if-let [data (:body req)]
+        (safe #(write-str (aoo data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+  )
 )
 

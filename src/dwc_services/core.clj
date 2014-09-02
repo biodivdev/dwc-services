@@ -8,6 +8,7 @@
   (:use dwc.archive)
   (:use dwc.gbif)
   (:use clojure.java.io)
+  (:require [dwc.calc :as calc])
   (:require [dwc.tapir :as tapir]
             [dwc.digir :as digir]))
 
@@ -70,3 +71,10 @@
         (digir/read-digir url opts)
         nil))))
 
+(defn eoo
+  [data] 
+   (calc/eoo (read-json data)))
+
+(defn aoo
+  [data] 
+   (calc/aoo (read-json data)))

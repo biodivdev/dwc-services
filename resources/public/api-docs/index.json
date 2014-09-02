@@ -22,6 +22,10 @@
         {
             "path":"search.json",
             "description":"Search for DwC records in Digir, Tapir or GBIF."
+        },
+        {
+            "path":"analysis.json",
+            "description":"Analysis on DwC records: AOO, EOO."
         }
     ]
 }
