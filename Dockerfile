@@ -12,12 +12,12 @@ RUN gem sources -r http://rubygems.org/ && gem sources -a https://rubygems.org/ 
 ADD start.sh /root/start.sh
 RUN chmod +x /root/start.sh
 
-ADD target/dwc-services-0.0.8-standalone.war /root/dwc-services.war
-
 ADD supervisord.conf /etc/supervisor/conf.d/proxy.conf
 
 EXPOSE 8080
 EXPOSE 9001
 
 CMD ["supervisord"]
+
+ADD target/dwc-services-0.0.9-standalone.war /root/dwc-services.war
 
