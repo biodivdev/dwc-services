@@ -1,6 +1,6 @@
 (defproject dwc-services "0.0.10"
   :description "Simple web api to convert darwincore formats."
-  :url "http://github.com/CNCFlora/dwc-rest"
+  :url "http://github.com/CNCFlora/dwc-services"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :main dwc-services.server

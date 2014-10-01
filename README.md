@@ -2,6 +2,22 @@
 
 Set of common web services around [DarwinCore library](http://github.com/CNCFlora/dwc).
 
+### Features
+
+- Convertion from/to: json, geojson, csv, xlsxa and dwca.
+- Validation the occurrences
+- AOO/EOO calculation
+- Search on Tapir, Digir and GBIF
+- Common fixes on records
+-- verbatimCoordinates vs decimalLatitude/decimalLongitude
+-- fields and keys case (DecimalLatitude vs decimalLatitude)
+-- empty and null values
+-- occurrenceID generation, if not exists, as one of:
+--- id field
+--- globalUniqueIdentifier field
+--- institutionCode:collectionCode:catalogNumber
+--- randomUUID
+
 ## Usage
 
 Checkout [Services API](http://cncflora.jbrj.gov.br/dwc-services).
