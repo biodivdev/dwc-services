@@ -24,7 +24,8 @@
 
 (def writers
   {:json write-json
-   :geojson write-geojson})
+   :geojson write-geojson
+   :csv write-csv})
 
 (defn str-to-file
   [data] 
