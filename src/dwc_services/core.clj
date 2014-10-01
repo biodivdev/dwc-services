@@ -25,7 +25,8 @@
 (def writers
   {:json write-json
    :geojson write-geojson
-   :csv write-csv})
+   :csv write-csv
+   :xlsx #(java.io.File. (write-xlsx %) )})
 
 (defn str-to-file
   [data] 

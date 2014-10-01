@@ -34,7 +34,7 @@
                             "required":true,
                             "type":"string",
                             "paramType":"query",
-                            "enum":["json","geojson","csv"]
+                            "enum":["json","geojson","csv","xlsx"]
                         },
                         {
                             "name":"fixes",
@@ -78,7 +78,7 @@
                             "required":true,
                             "type":"string",
                             "paramType":"query",
-                            "enum":["json","geojson","csv"]
+                            "enum":["json","geojson","csv","xlsx"]
                         },
                         {
                             "name":"fixes",
