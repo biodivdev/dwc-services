@@ -5,8 +5,8 @@
   (:use dwc-services.api)
   (:use dwc-services.web-wrap)
   (:require [compojure.route :as route]
-            [compojure.handler :as handler]))
-
+            [compojure.handler :as handler])
+  (:gen-class))
 
 (defroutes main
 
