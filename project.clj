@@ -1,4 +1,4 @@
-(defproject dwc-services "0.0.11"
+(defproject dwc-services "0.0.12"
   :description "Simple web api to convert darwincore formats."
   :url "http://github.com/CNCFlora/dwc-services"
   :license {:name "MIT" }
