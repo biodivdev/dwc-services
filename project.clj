@@ -3,10 +3,11 @@
   :url "http://github.com/CNCFlora/dwc-services"
   :license {:name "MIT" }
   :main dwc-services.server
+  :jvm-opts ["-Xmx2G" "-Xms2G" "-server"] 
   :ring {:handler dwc-services.server/app :reload-paths ["src"]}
   :resources-path "resources"
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [dwc "0.0.30"]
+                 [dwc "0.0.31"]
                  [clj-time "0.8.0"]
                  [compojure "1.1.8"]
                  [ring/ring-core "1.3.1"]
