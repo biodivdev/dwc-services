@@ -3,7 +3,6 @@ FROM dockerfile/java:oracle-java8
 RUN apt-get update && apt-get install supervisor ruby -y
 
 RUN mkdir /var/log/supervisord 
-RUN mkdir /var/lib/floraconnect
 
 RUN wget http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.2.2.v20140723/jetty-runner-9.2.2.v20140723.jar -O /root/jetty.jar
 
@@ -19,5 +18,5 @@ EXPOSE 9001
 
 CMD ["supervisord"]
 
-ADD target/dwc-services-0.0.12-standalone.war /root/dwc-services.war
+ADD target/dwc-services-0.0.14-standalone.war /root/dwc-services.war
 
