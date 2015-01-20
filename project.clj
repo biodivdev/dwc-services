@@ -7,8 +7,7 @@
   :resources-path "resources"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [dwc-io "0.0.36"]
-                 [dwc-analysis "0.0.2"]
-                 [clj-time "0.8.0"]
+                 [dwc-analysis "0.0.5"]
                  [compojure "1.1.8"]
                  [ring/ring-core "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]

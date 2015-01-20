@@ -6,6 +6,39 @@
     "models":{},
     "apis": [
         {
+            "path":"analysis/all",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Calculates EOO and AOO, from a JSON Array on a URL.",
+                    "nickname":"all_analysis",
+                    "parameters":[
+                        {
+                            "name":"url",
+                            "description":"Location of the resource",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                },
+                {
+                    "method":"POST",
+                    "summary":"Calculates EOO and AOO, from posted JSON Array data.",
+                    "nickname":"all_analysis",
+                    "parameters":[
+                        {
+                            "name":"body",
+                            "description":"JSON of Array of DarwinCore records.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "path":"analysis/eoo",
             "operations":[
                 {

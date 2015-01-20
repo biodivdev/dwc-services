@@ -19,13 +19,21 @@
   "CORS Options Wrapper"
   [handler]
    (fn [req]
-     (if (= "OPTIONS" (:method req))
+     (if (= :options (:request-method req))
        {:headers {"Allow" "GET,POST,PUT,OPTIONS" 
-                  "Access-Control-Allow-Origin"  "*"
-                  "Access-Control-Allow-Methods" "GET,POST,OPTIONS" 
-                  "Access-Control-Allow-Headers" "x-requested-with"}
+                  "Access-Control-Allow-Origin" ((:headers req) "origin")
+                  "Access-Control-Allow-Methods" "GET,POST,PUT,OPTIONS" 
+                  "Access-Control-Allow-Headers" (str "x-requested-with" "," ((:headers req) "access-control-request-headers" ) )}
         :status 200}
-       (handler req))))
+       (let [res (handler req)]
+         (assoc res :headers
+            (merge (:headers res)
+               {"Allow" "GET,POST,PUT,OPTIONS" 
+                "Access-Control-Allow-Origin" ((:headers req) "origin")
+                "Access-Control-Allow-Methods" "GET,POST,PUT,OPTIONS" 
+                "Access-Control-Allow-Headers" (str "x-requested-with" "," ((:headers req) "access-control-request-headers" ) )}
+             ))
+         ))))
 
 (def context-path (atom nil))
 

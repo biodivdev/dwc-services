@@ -102,6 +102,16 @@
 
   (context "/analysis" []
 
+    (GET "/all" {params :params}
+      (if-let [data (:url params)]
+        (safe #(write-str (all-analysis data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+
+    (POST "/all" req
+      (if-let [data (:body req)]
+        (safe #(write-str (all-analysis data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+
     (GET "/eoo" {params :params}
       (if-let [data (:url params)]
         (safe #(write-str (eoo data)))

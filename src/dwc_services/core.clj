@@ -81,3 +81,10 @@
 (defn aoo
   [data] 
    (aoo/aoo (-fix-> (read-json data) )))
+
+(defn all-analysis
+  [data]
+   (let [occs (-fix-> (read-json data))]
+     {:eoo (eoo/eoo occs)
+      :aoo (aoo/aoo occs)}
+   ))
