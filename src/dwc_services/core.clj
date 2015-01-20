@@ -1,16 +1,17 @@
 (ns dwc-services.core
-  (:use dwc.fixes)
-  (:use dwc.validation)
-  (:use dwc.csv)
-  (:use dwc.xlsx)
-  (:use dwc.json)
-  (:use dwc.geojson)
-  (:use dwc.archive)
-  (:use dwc.gbif)
+  (:use dwc-io.fixes)
+  (:use dwc-io.validation)
+  (:use dwc-io.csv)
+  (:use dwc-io.xlsx)
+  (:use dwc-io.json)
+  (:use dwc-io.geojson)
+  (:use dwc-io.archive)
+  (:use dwc-io.gbif)
   (:use clojure.java.io)
-  (:require [dwc.calc :as calc])
-  (:require [dwc.tapir :as tapir]
-            [dwc.digir :as digir]))
+  (:require [dwc-analysis.aoo :as aoo])
+  (:require [dwc-analysis.eoo :as eoo])
+  (:require [dwc-io.tapir :as tapir]
+            [dwc-io.digir :as digir]))
 
 (def readers
   {:csv read-csv
@@ -75,8 +76,8 @@
 
 (defn eoo
   [data] 
-   (calc/eoo (read-json data)))
+   (eoo/eoo (-fix-> (read-json data) )))
 
 (defn aoo
   [data] 
-   (calc/aoo (read-json data)))
+   (aoo/aoo (-fix-> (read-json data) )))

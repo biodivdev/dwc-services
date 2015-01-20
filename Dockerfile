@@ -12,5 +12,5 @@ EXPOSE 9001
 
 CMD ["supervisord"]
 
-ADD target/dwc-services-0.0.15-standalone.war /root/dwc-services.war
+ADD target/dwc-services-0.0.17-standalone.war /root/dwc-services.war
 
