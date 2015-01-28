@@ -13,5 +13,5 @@ ENV JAVA_OPTS -server -XX:+UseConcMarkSweepGC -XX:+UseCompressedOops -XX:+DoEsca
 
 CMD ["supervisord"]
 
-ADD target/dwc-services-0.0.17-standalone.war /root/dwc-services.war
+ADD target/dwc-services-0.0.18-standalone.war /root/dwc-services.war
 
