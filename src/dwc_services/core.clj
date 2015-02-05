@@ -10,6 +10,7 @@
   (:use clojure.java.io)
   (:require [dwc-analysis.aoo :as aoo])
   (:require [dwc-analysis.eoo :as eoo])
+  (:require [dwc-analysis.populations :as populations])
   (:require [dwc-io.tapir :as tapir]
             [dwc-io.digir :as digir]))
 
@@ -51,11 +52,15 @@
 
 (defn convert
   [{from :from to :to source :source fixes :fixes}]
-   ((get writers (keyword to ))
-    (let [data ((get readers (keyword from)) source)]
-      (if-not fixes
-       data
-       (-fix-> data)))))
+  (let [writer (get writers (keyword to))
+        reader (get readers (keyword from))
+        data   (reader source)]
+    (writer
+      (if fixes 
+        (-fix-> data)
+        data)
+    )
+  ))
 
 (defn fix
   [data]
@@ -76,15 +81,20 @@
 
 (defn eoo
   [data] 
-   (eoo/eoo (-fix-> (read-json data) )))
+   (eoo/eoo (-fix-> (read-json data))))
 
 (defn aoo
   [data] 
-   (aoo/aoo (-fix-> (read-json data) )))
+   (aoo/aoo (-fix-> (read-json data))))
+
+(defn populations
+  [data] 
+   (populations/populations (-fix-> (read-json data))))
 
 (defn all-analysis
   [data]
    (let [occs (-fix-> (read-json data))]
      {:eoo (eoo/eoo occs)
-      :aoo (aoo/aoo occs)}
+      :aoo (aoo/aoo occs)
+      :populations (populations/populations occs) }
    ))
