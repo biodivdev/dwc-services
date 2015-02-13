@@ -132,14 +132,14 @@
         (safe #(write-str (aoo data)))
         {:status 400 :body "Must provide occurrence json of data as input."}))
 
-    (GET "/populations" {params :params}
+    (GET "/clusters" {params :params}
       (if-let [data (:url params)]
-        (safe #(write-str (populations data)))
+        (safe #(write-str (clusters data)))
         {:status 400 :body "Must provide occurrence json of data as input."}))
 
-    (POST "/populations" req
+    (POST "/clusters" req
       (if-let [data (:body req)]
-        (safe #(write-str (populations data)))
+        (safe #(write-str (clusters data)))
         {:status 400 :body "Must provide occurrence json of data as input."}))
   )
 )

@@ -8,9 +8,11 @@
   (:use dwc-io.archive)
   (:use dwc-io.gbif)
   (:use clojure.java.io)
+  (:require [dwc-analysis.all :as all])
   (:require [dwc-analysis.aoo :as aoo])
   (:require [dwc-analysis.eoo :as eoo])
-  (:require [dwc-analysis.populations :as populations])
+  (:require [dwc-analysis.risk :as risk])
+  (:require [dwc-analysis.clusters :as clusters])
   (:require [dwc-io.tapir :as tapir]
             [dwc-io.digir :as digir]))
 
@@ -87,14 +89,11 @@
   [data] 
    (aoo/aoo (-fix-> (read-json data))))
 
-(defn populations
+(defn clusters
   [data] 
-   (populations/populations (-fix-> (read-json data))))
+   (clusters/clusters (-fix-> (read-json data))))
 
 (defn all-analysis
   [data]
-   (let [occs (-fix-> (read-json data))]
-     {:eoo (eoo/eoo occs)
-      :aoo (aoo/aoo occs)
-      :populations (populations/populations occs) }
-   ))
+  (all/all-analysis (-fix-> (read-json data))))
+
