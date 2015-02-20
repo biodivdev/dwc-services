@@ -26,6 +26,27 @@
                             "required":true,
                             "type":"string",
                             "paramType":"query"
+                        },
+                        {
+                            "name":"fixes",
+                            "description":"Apply common fixes.",
+                            "required": false,
+                            "type":"boolean",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"offset",
+                            "description":"Offset of search",
+                            "required":false,
+                            "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"limit",
+                            "description":"Limit of search",
+                            "required":false,
+                            "type":"string",
+                            "paramType":"query"
                         }
                      ]
  	        }
@@ -66,6 +87,13 @@
                             "description":"Value to search on field",
                             "required":true,
                             "type":"string",
+                            "paramType":"query"
+                        },
+                        {
+                            "name":"fixes",
+                            "description":"Apply common fixes.",
+                            "required": false,
+                            "type":"boolean",
                             "paramType":"query"
                         },
                         {

@@ -13,6 +13,7 @@
   (:require [dwc-analysis.eoo :as eoo])
   (:require [dwc-analysis.risk :as risk])
   (:require [dwc-analysis.clusters :as clusters])
+  (:require [dwc-analysis.quality :as quality])
   (:require [dwc-io.tapir :as tapir]
             [dwc-io.digir :as digir]))
 
@@ -92,6 +93,10 @@
 (defn clusters
   [data] 
    (clusters/clusters (-fix-> (read-json data))))
+
+(defn quality
+  [data] 
+   (quality/analyse (-fix-> (read-json data))))
 
 (defn all-analysis
   [data]

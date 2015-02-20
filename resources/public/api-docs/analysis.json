@@ -103,6 +103,72 @@
                     ]
                 }
             ]
+        },
+        {
+            "path":"analysis/clusters",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Calculates clusters, from a JSON Array on a URL.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"url",
+                            "description":"Location of the resource",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                },
+                {
+                    "method":"POST",
+                    "summary":"Calculates clusters, from posted JSON Array data.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"body",
+                            "description":"JSON of Array of DarwinCore records.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path":"analysis/quality",
+            "operations":[
+                {
+                    "method":"GET",
+                    "summary":"Calculates quality, from a JSON Array on a URL.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"url",
+                            "description":"Location of the resource",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"query"
+                        }
+                    ]
+                },
+                {
+                    "method":"POST",
+                    "summary":"Calculates quality, from posted JSON Array data.",
+                    "nickname":"analysis",
+                    "parameters":[
+                        {
+                            "name":"body",
+                            "description":"JSON of Array of DarwinCore records.",
+                            "required":true,
+                            "type":"string",
+                            "paramType":"body"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

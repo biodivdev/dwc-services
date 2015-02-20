@@ -39,13 +39,13 @@
           (if-let [hook (:hook params)]
             (do 
               (future
-                (http/post hook {:body (convert {:from from :to to :source url :fixes (:fixes params)})
+                (http/post hook {:body (convert {:from from :to to :source url :fixes (= "true" (:fixes params) )})
                                   :headers {"Content-Type" (get ctypes to)}}))
               {:status 200 :body "ok"})
             {:status 200
              :headers {"Content-Disposition" (str "attachment; filename=\"dwc." to "\"")
                        "Content-Type" (get ctypes (keyword to ))}
-             :body (convert {:from from :to to :source url :fixes (:fixes params)})})
+             :body (convert {:from from :to to :source url :fixes (= "true" (:fixes params) )})})
           {:status 400 :body "Must provide 'to' parameter of the output format."})
         {:status 400 :body "Must provide 'from' parameter of the input format."})
      {:status 400 :body "Must provide 'url' parameter of data source or data as input."}))
@@ -82,7 +82,10 @@
     (if-let [field (:field params)]
       (if-let [value (:value params)]
         (safe #(write-str 
-                 (gbif {field value})))
+                 (let [r (gbif {field value :limit (Integer/parseInt (or (:limit params)  "200000")) :offset (Integer/parseInt (or (:offset params) "0") )})]
+                   (if (= "true" (:fixes params))
+                     (assoc r :results (fix (str-to-file (write-str (:results r)))))
+                     r))))
         {:status 400 :body "Must provide 'value' parameter to search in field."})
       {:status 400 :body "Must provide 'field' parameter of field to search in."}))
 
@@ -91,11 +94,14 @@
       (if-let [field (:field params)]
         (if-let [value (:value params)]
             (safe #(write-str 
-                    (search (:type params) url
-                      {:filters {field value} 
-                       :fields (vec (.split (or (:fields params) "") ","))
-                       :start (Integer/valueOf (or (:start params) 0))
-                       :limit (Integer/valueOf (or (:limit params) 9999))})))
+                    (let [r (search (:type params) url
+                              {:filters {field value} 
+                               :fields (vec (.split (or (:fields params) "") ","))
+                               :start (Integer/valueOf (or (:start params) 0))
+                               :limit (Integer/valueOf (or (:limit params) 9999))})]
+                      (if (= "true" (:fixes params) ) 
+                         (assoc r :records (fix (str-to-file (write-str (:records r)))))
+                        r))))
           {:status 400 :body "Must provide 'value' parameter to search in field."})
         {:status 400 :body "Must provide 'field' parameter of field to search in."})
       {:status 400 :body "Must provide 'url' parameter of data as input."}))
@@ -140,6 +146,16 @@
     (POST "/clusters" req
       (if-let [data (:body req)]
         (safe #(write-str (clusters data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+
+    (GET "/quality" {params :params}
+      (if-let [data (:url params)]
+        (safe #(write-str (quality data)))
+        {:status 400 :body "Must provide occurrence json of data as input."}))
+
+    (POST "/quality" req
+      (if-let [data (:body req)]
+        (safe #(write-str (quality data)))
         {:status 400 :body "Must provide occurrence json of data as input."}))
   )
 )
