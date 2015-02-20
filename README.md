@@ -46,6 +46,7 @@ Tasks:
     lein midje :autotest # run tests on file changes
     lein ring server-headless # run server on 192.168.50.30:3000
     lein ring uberwar # generate war
+    lein ring uberjar # generate jar
 
 Docker:
 

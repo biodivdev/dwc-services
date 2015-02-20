@@ -5,8 +5,7 @@
   (:use dwc-services.api)
   (:use dwc-services.web-wrap)
   (:require [compojure.route :as route]
-            [compojure.handler :as handler])
-  (:gen-class))
+            [compojure.handler :as handler]))
 
 (defroutes main
 
@@ -31,8 +30,10 @@
       (wrap-jsonp)
       (wrap-options)))
 
+
 (defn -main
   ""
-  [& args]
-  (run-jetty app {:port 3030 :join? true}))
+  ([& args]
+    (run-jetty #'app {:port 3030 :join? true})
+    (shutdown-agents)))
 
