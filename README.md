@@ -1,6 +1,6 @@
 # dwc-services
 
-Set of common web services around [DarwinCore library](http://github.com/CNCFlora/dwc).
+Set of common web services around [DarwinCore library](http://github.com/diogok/dwc).
 
 ### Features
 
@@ -17,6 +17,11 @@ Set of common web services around [DarwinCore library](http://github.com/CNCFlor
 --- globalUniqueIdentifier field
 --- institutionCode:collectionCode:catalogNumber
 --- randomUUID
+- Analysis
+-- AOO
+-- EOO
+-- Clusters
+-- Quality
 
 ## Usage
 
