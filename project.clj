@@ -5,7 +5,7 @@
   :ring {:handler dwc-services.server/app :reload-paths ["src"]}
   :resources-path "resources"
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [dwc-io "0.0.39"]
+                 [dwc-io "0.0.40"]
                  [dwc-analysis "0.0.22"]
                  [compojure "1.1.8"]
                  [ring/ring-core "1.3.1"]
