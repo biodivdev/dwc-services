@@ -25,7 +25,7 @@ Set of common web services around [DarwinCore library](http://github.com/diogok/
 
 ## Usage
 
-Checkout [Services API](http://cncflora.jbrj.gov.br/dwc-services).
+Checkout the [Services API](http://dwc-01-1.diogok.cont.tutum.io:8080/api/v1).
 
 ## Dev
 
