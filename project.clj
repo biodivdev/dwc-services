@@ -11,6 +11,7 @@
                  [ring/ring-core "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]
                  [org.clojure/data.json "0.2.5"]
+                 [org.clojars.diogok/ring-gzip-middleware "0.0.2"]
                  [clj-http "0.9.0"]]
   :profiles {:dev {:dependencies [[midje "1.6.3"]
                                   [javax.servlet/servlet-api "2.5"]]

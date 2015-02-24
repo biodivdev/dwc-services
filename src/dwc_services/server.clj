@@ -4,6 +4,7 @@
   (:use compojure.core)
   (:use dwc-services.api)
   (:use dwc-services.web-wrap)
+  (:use ring.middleware.gzip)
   (:require [compojure.route :as route]
             [compojure.handler :as handler]))
 
@@ -28,7 +29,9 @@
       (wrap-context-redir)
       (wrap-proxy-redir)
       (wrap-jsonp)
-      (wrap-options)))
+      (wrap-options)
+      (wrap-gzip)
+      ))
 
 
 (defn -main

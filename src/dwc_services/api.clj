@@ -82,10 +82,10 @@
     (if-let [field (:field params)]
       (if-let [value (:value params)]
         (safe #(write-str 
-                 (let [r (gbif {field value :limit (Integer/parseInt (or (:limit params)  "200000")) :offset (Integer/parseInt (or (:offset params) "0") )})]
+                 (let [r (gbif {field value :limit (Integer/parseInt (or (:limit params)  "200000")) :offset (Integer/parseInt (or (:offset params) "0") )}) ]
                    (if (= "true" (:fixes params))
-                     (assoc r :results (fix (str-to-file (write-str (:results r)))))
-                     r))))
+                     (fix (str-to-file (write-str (:results r))))
+                     (:results r)))))
         {:status 400 :body "Must provide 'value' parameter to search in field."})
       {:status 400 :body "Must provide 'field' parameter of field to search in."}))
 
