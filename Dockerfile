@@ -21,5 +21,5 @@ ADD start.sh /root/start.sh
 RUN chmod +x /root/start.sh
 CMD ["/root/start.sh"]
 
-ADD target/dwc-services-0.0.20-standalone.war /root/dwc-services.war
+ADD target/dwc-services-0.0.21-standalone.war /root/dwc-services.war
 
