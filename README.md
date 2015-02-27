@@ -51,8 +51,8 @@ Tasks:
 Docker:
 
     docker build -t cncflora/dwc-services . # build the container
-    docker run -p 8181:8080 -p 9001:9001 -t cncflora/dwc-servces # run the container
-    docker run -p 8181:8080 -p 9001:9001 -e "CONTEXT=/dwc" -t cncflora/dwc-servces # run the container with app on context /dwc
+    docker run -p 8181:80 -p 9001:9001 -t cncflora/dwc-servces # run the container
+    docker run -p 8181:80 -p 9001:9001 -e "CONTEXT=/dwc" -t cncflora/dwc-servces # run the container with app on context /dwc
 
 ## License
 
