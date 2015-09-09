@@ -1,6 +1,6 @@
-FROM cncflora/java8
+FROM diogok/java8
 
-RUN curl http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.2.7.v20150116/jetty-runner-9.2.7.v20150116.jar -o /root/jetty.jar
+RUN curl https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-runner/9.3.3.v20150827/jetty-runner-9.3.3.v20150827.jar -o /root/jetty.jar
 
 EXPOSE 80
 
@@ -12,5 +12,5 @@ ADD start.sh /root/start.sh
 RUN chmod +x /root/start.sh
 CMD ["/root/start.sh"]
 
-ADD target/dwc-services-0.0.24-standalone.war /root/dwc-services.war
+ADD target/dwc-services-0.0.25-standalone.war /root/dwc-services.war
 

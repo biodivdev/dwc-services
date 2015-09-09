@@ -1,12 +1,12 @@
-(defproject dwc-services "0.0.24"
+(defproject dwc-services "0.0.25"
   :description "Simple web api to convert darwincore formats and perform analysis."
-  :url "http://github.com/CNCFlora/dwc-services"
+  :url "http://github.com/diogok/dwc-services"
   :license {:name "MIT" }
   :ring {:handler dwc-services.server/app :reload-paths ["src"]}
   :resources-path "resources"
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [dwc-io "0.0.44"]
-                 [dwc-analysis "0.0.25"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [dwc-io "0.0.45"]
+                 [dwc-analysis "0.0.26"]
                  [compojure "1.1.8"]
                  [ring/ring-core "1.3.1"]
                  [ring/ring-jetty-adapter "1.3.1"]
