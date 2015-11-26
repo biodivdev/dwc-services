@@ -4,8 +4,9 @@
   :license {:name "MIT" }
   :ring {:handler dwc-services.server/app :reload-paths ["src"]}
   :resources-path "resources"
+  :main dwc-services.server
   :dependencies [[org.clojure/clojure "1.7.0"]
-                 [dwc-io "0.0.45"]
+                 [dwc-io "0.0.51"]
                  [dwc-analysis "0.0.27"]
                  [compojure "1.1.8"]
                  [ring/ring-core "1.3.1"]
