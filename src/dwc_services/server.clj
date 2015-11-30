@@ -6,7 +6,8 @@
   (:use dwc-services.web-wrap)
   (:use ring.middleware.gzip)
   (:require [compojure.route :as route]
-            [compojure.handler :as handler]))
+            [compojure.handler :as handler])
+  (:gen-class))
 
 (defroutes main
 
@@ -37,6 +38,7 @@
 (defn -main
   ""
   ([& args]
-    (run-jetty #'app {:port 3030 :join? true})
+    (let [port (System/getProperty "PORT" "3000")]
+     (run-jetty #'app {:port (Integer/valueOf port) :join? true}))
     (shutdown-agents)))
 
