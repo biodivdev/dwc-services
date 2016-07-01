@@ -1,4 +1,4 @@
-(defproject dwc-services "0.0.32"
+(defproject dwc-services "0.0.33"
   :description "Simple web api to convert darwincore formats and perform analysis."
   :url "http://github.com/diogok/dwc-services"
   :license {:name "MIT" }
@@ -8,11 +8,11 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [dwc-io "0.0.56"]
                  [dwc-analysis "0.0.31"]
-                 [compojure "1.5.0"]
-                 [ring/ring-core "1.4.0"]
-                 [ring/ring-jetty-adapter "1.4.0"]
+                 [compojure "1.5.1"]
+                 [ring/ring-core "1.5.0"]
+                 [ring/ring-jetty-adapter "1.5.0"]
                  [org.clojure/data.json "0.2.6"]
-                 [org.clojars.diogok/ring-gzip-middleware "0.0.2"]
+                 [amalloy/ring-gzip-middleware "0.1.3"]
                  [clj-http "2.2.0"]]
   :repositories [["osgeo" "http://download.osgeo.org/webdav/geotools/"]]
   :profiles {:dev {:dependencies [[midje "1.8.2"]

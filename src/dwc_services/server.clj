@@ -12,7 +12,7 @@
 (defroutes main
 
   (GET "/" [] 
-    (redirect "/index.html"))
+    (slurp (clojure.java.io/resource "public/index.html")))
 
   (POST "/echo" req
     (let [data (slurp (:body req))]
