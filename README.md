@@ -1,12 +1,11 @@
 # dwc-services
 
-Set of common web services around [DarwinCore library](http://github.com/diogok/dwc).
+This implements a complete API for working with DwarinCore records, from  [dwc-io](https://github.com/biodivdev/dwc-io) and [dwc-analysis](https://github.com/biodivdev/dwc-analsys) libs.
 
 ### Features
 
-- Convertion from/to: json, geojson, csv, xlsxa and dwca.
-- Validation the occurrences
-- AOO/EOO calculation
+- Convertion from/to: json, geojson, csv, xlsx and dwca.
+- Validation of occurrences
 - Search on Tapir, Digir and GBIF
 - Common fixes on records
 -- verbatimCoordinates vs decimalLatitude/decimalLongitude
@@ -25,7 +24,25 @@ Set of common web services around [DarwinCore library](http://github.com/diogok/
 
 ## Usage
 
-Checkout the [Services API](http://dwc-01-1.diogok.cont.tutum.io:8080/api/v1).
+Checkout the [Services API](http://cncflora.jbrj.gov.br/dwc_services/index.html).
+
+## Deploy
+
+### WAR 
+
+Download the latest war from the [ realases page ](https://github.com/biodivdev/dwc-services/releases) and deploy it to your favorite container.
+
+### JAR
+
+Download the latest jar from the [ realases page ](https://github.com/biodivdev/dwc-services/releases) and run it:
+
+  $ java -jar dwc-services.jar
+
+### Docker
+
+Using docker:
+
+    $ docker run -p 8080:80 diogok/dwc-services
 
 ## Dev
 
@@ -34,13 +51,7 @@ Clone the repo and enter the project:
     git clone git@github.com:cncflora/dwc-services.git
     cd dwc-services
 
-Use [vagrant](http://vagrantup.com) have a dev machine:
-
-    vagrant up
-    vagrant ssh
-    cd /vagrant # inside vagrant ssh
-
-Tasks:
+Lein tasks:
 
     lein midje # run tests
     lein midje :autotest # run tests on file changes
@@ -50,9 +61,8 @@ Tasks:
 
 Docker:
 
-    docker build -t cncflora/dwc-services . # build the container
-    docker run -p 8181:80 -p 9001:9001 -t cncflora/dwc-servces # run the container
-    docker run -p 8181:80 -p 9001:9001 -e "CONTEXT=/dwc" -t cncflora/dwc-servces # run the container with app on context /dwc
+    docker build -t diogok/dwc-services . # build the container
+    docker run -p 8181:80 -t diogok/dwc-servces # run the container
 
 ## License
 

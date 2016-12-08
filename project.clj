@@ -1,6 +1,6 @@
-(defproject dwc-services "0.0.33"
+(defproject dwc-services "0.0.34"
   :description "Simple web api to convert darwincore formats and perform analysis."
-  :url "http://github.com/diogok/dwc-services"
+  :url "http://github.com/biodivev/dwc-services"
   :license {:name "MIT" }
   :ring {:handler dwc-services.server/app :reload-paths ["src"]}
   :resources-path "resources"
@@ -15,7 +15,8 @@
                  [amalloy/ring-gzip-middleware "0.1.3"]
                  [clj-http "2.2.0"]]
   :repositories [["osgeo" "http://download.osgeo.org/webdav/geotools/"]]
-  :profiles {:dev {:dependencies [[midje "1.8.2"]
+  :profiles {:uberjar {:aot :all}
+             :dev {:dependencies [[midje "1.8.2"]
                                   [javax.servlet/servlet-api "2.5"]]
                    :plugins [[lein-ring "0.9.7"]
                              [lein-midje "3.2"]]}})

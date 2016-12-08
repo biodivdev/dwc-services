@@ -38,7 +38,7 @@
 (defn -main
   ""
   ([& args]
-    (let [port (System/getProperty "PORT" "3000")]
+    (let [port (System/getProperty "PORT" "8080")]
      (run-jetty #'app {:port (Integer/valueOf port) :join? true}))
     (shutdown-agents)))
 
